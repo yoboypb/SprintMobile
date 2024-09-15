@@ -21,5 +21,12 @@ class MainActivity : AppCompatActivity() {
             var navegarTelalogin = Intent(this,TelaLogin::class.java)
             startActivity(navegarTelalogin)
         }
+        var btnCadastro: Button
+        btnCadastro = findViewById(R.id.btnCadastro)
+
+        btnCadastro.setOnClickListener{
+            var navegarTelaCadastro = Intent(this,TelaCadastro::class.java)
+            startActivity(navegarTelaCadastro)
+        }
     }
 }
