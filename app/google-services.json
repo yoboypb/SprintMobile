@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "463859624951",
+    "firebase_url": "https://sprint-mobile-4f763-default-rtdb.firebaseio.com",
+    "project_id": "sprint-mobile-4f763",
+    "storage_bucket": "sprint-mobile-4f763.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463859624951:android:13ccd01e68cc155d2a1cf2",
+        "android_client_info": {
+          "package_name": "com.example.sprintmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtykKwtDaQC4S3n239q1A4AYLEmxSIp-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
