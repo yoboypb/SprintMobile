@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.sprintmobile.databinding.ActivityTelaCadastroBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
     class   TelaCadastro : AppCompatActivity() {
 
@@ -22,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        binding.textView.setOnClickListener{
+        binding.txtRedirectLogin.setOnClickListener{
             val intent = Intent(this, TelaLogin::class.java)
             startActivity(intent)
         }
@@ -31,24 +32,27 @@ import com.google.firebase.auth.FirebaseAuth
             val senha = binding.senha.text.toString()
             val confSenha = binding.confSenha.text.toString()
 
-            if (email.isNotEmpty() && senha.isNullOrEmpty() && confSenha.isNotEmpty()){
-                if (senha == confSenha){
-
-                    firebaseAuth.createUserWithEmailAndPassword(email , senha).addOnCompleteListener{
-                        if (it.isSuccessful){
+            if (email.isNotEmpty() && senha.isNotEmpty() && confSenha.isNotEmpty()) {
+                if (senha == confSenha) {
+                    firebaseAuth.createUserWithEmailAndPassword(email, senha).addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
                             val intent = Intent(this, TelaInicial::class.java)
                             startActivity(intent)
-                        }else{
-                            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        } else {
+                            try {
+                                throw task.exception!!
+                            } catch (e: FirebaseAuthUserCollisionException) {
+                                Toast.makeText(this, "Este e-mail já está sendo utilizado", Toast.LENGTH_SHORT).show()
+                            } catch (e: Exception) {
+                                Toast.makeText(this, e.message.toString(), Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
-
-                }else{
-                    Toast.makeText(this,"As senhas não estão iguais", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "As senhas não estão iguais", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                Toast.makeText(this,"Por favor preencha todos os campos", Toast.LENGTH_SHORT).show()
-
+            } else {
+                Toast.makeText(this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
