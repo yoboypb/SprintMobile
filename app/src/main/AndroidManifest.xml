@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SprintMobile"
         tools:targetApi="31">
         <activity
+            android:name=".TelaProduto"
+            android:exported="false" />
+        <activity
             android:name=".TelaCadastro"
             android:exported="false" />
         <activity

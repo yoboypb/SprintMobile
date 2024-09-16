@@ -1,6 +1,7 @@
 package com.example.sprintmobile
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,17 +40,26 @@ class Chat : Fragment() {
 
         buttonSend.setOnClickListener {
             val userMessage = editTextMessage.text.toString()
-            if (userMessage.isNotEmpty()) {
-                // Adicionar mensagem do usuário
-                messageList.add(Message(userMessage, true))
-                chatAdapter.notifyDataSetChanged()
+            try{
+                if (userMessage.isNotEmpty()) {
+                    // Adicionar mensagem do usuário
+                    messageList.add(Message(userMessage, true))
+                    chatAdapter.notifyDataSetChanged()
 
-                // Limpar o campo de texto
-                editTextMessage.setText("")
+                    // Limpar o campo de texto
+                    editTextMessage.setText("")
 
-                // Enviar mensagem para a API
-                sendMessageToChatGPT(userMessage)
+                    // Enviar mensagem para a API
+                    sendMessageToChatGPT(userMessage)
+
+                    Log.i("Teste",("if"))
             }
+
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+
+
         }
 
         return view
@@ -72,11 +82,14 @@ class Chat : Fragment() {
                     val chatResponse = response.body()!!.choices[0].message.content
                     messageList.add(Message(chatResponse, false))
                     chatAdapter.notifyDataSetChanged()
+                    Log.i("Teste", "Resposta recebida")
+                } else {
+                    Log.e("Teste", "Erro na resposta: ${response.errorBody()?.string()}")
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<ChatGPTResponse>, t: Throwable) {
-                t.printStackTrace()
+                Log.e("Teste", "Falha na requisição", t)
             }
         })
     }
