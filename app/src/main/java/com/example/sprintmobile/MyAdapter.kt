@@ -1,63 +1,47 @@
-package com.example.sprintmobile;
+package com.example.sprintmobile
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+class MyAdapter(private val itemList: MutableList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-    private List<String> itemList;
-    private List<String> itemListFull; // Lista completa para restaurar após a filtragem
+    private val itemListFull: List<String> = ArrayList(itemList) // Copia a lista original
 
-    public MyAdapter(List<String> itemList) {
-        this.itemList = itemList;
-        itemListFull = new ArrayList<>(itemList); // Copia a lista original
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        // Infla o layout personalizado do item da lista
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.itens_lista, parent, false)
+        return MyViewHolder(view)
     }
 
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
-        return new MyViewHolder(view);
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        // Obtém o item atual da lista e configura o TextView
+        val currentItem = itemList[position]
+        holder.textView.text = currentItem
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        String currentItem = itemList.get(position);
-        holder.textView.setText(currentItem);
-    }
+    override fun getItemCount(): Int = itemList.size
 
-    @Override
-    public int getItemCount() {
-        return itemList.size();
-    }
-
-    public void filter(String text) {
-        itemList.clear();
+    // Método de filtragem
+    fun filter(text: String) {
+        itemList.clear()
         if (text.isEmpty()) {
-            itemList.addAll(itemListFull); // Restaura a lista completa se a pesquisa estiver vazia
+            itemList.addAll(itemListFull) // Restaura a lista completa se a pesquisa estiver vazia
         } else {
-            String searchText = text.toLowerCase();
-            for (String item : itemListFull) {
+            val searchText = text.toLowerCase()
+            for (item in itemListFull) {
                 if (item.toLowerCase().contains(searchText)) {
-                    itemList.add(item); // Adiciona os itens que correspondem à pesquisa
+                    itemList.add(item) // Adiciona os itens que correspondem à pesquisa
                 }
             }
         }
-        notifyDataSetChanged(); // Atualiza a lista exibida
+        notifyDataSetChanged() // Atualiza a lista exibida
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView = itemView.findViewById(android.R.id.text1);
-        }
+    // ViewHolder personalizado para armazenar as referências aos elementos do layout
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView: TextView = itemView.findViewById(R.id.itemTextView)
     }
 }

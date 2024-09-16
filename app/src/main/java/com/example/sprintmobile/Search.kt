@@ -19,20 +19,16 @@ class Search : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Infla o layout do fragment
         val view = inflater.inflate(R.layout.fragment_search, container, false)
 
-        // Inicializa a lista de itens
         itemList = mutableListOf()
-        populateItemList() // Preenche a lista com dados
+        populateItemList()
 
-        // Configura o RecyclerView
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
         adapter = MyAdapter(itemList)
         recyclerView.adapter = adapter
 
-        // Configura o SearchView
         searchView = view.findViewById(R.id.searchView)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -40,7 +36,6 @@ class Search : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Chama o método de filtragem do adaptador
                 adapter.filter(newText ?: "")
                 return false
             }
@@ -50,18 +45,16 @@ class Search : Fragment() {
     }
 
     private fun populateItemList() {
-        // Adiciona itens à lista
         itemList.apply {
-            add("Apple")
-            add("Banana")
-            add("Orange")
-            add("Grape")
-            add("Pineapple")
-            add("Watermelon")
-            add("Strawberry")
-            add("Cherry")
-            add("Mango")
-            add("Blueberry")
+            add("Eletrônicos")
+            add("Cozinha e Jantar")
+            add("Itens de Beleza")
+            add("Brinquedos")
+            add("Moda")
+            add("Saúde")
+            add("Ferramentas")
+            add("Industrial")
+            add("Filmes e TV")
         }
     }
 }

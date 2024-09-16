@@ -1,59 +1,83 @@
 package com.example.sprintmobile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Chat.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Chat : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var chatAdapter: ChatAdapter
+    private lateinit var messageList: MutableList<Message>
+    private lateinit var editTextMessage: EditText
+    private lateinit var buttonSend: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false)
+        val view = inflater.inflate(R.layout.fragment_chat, container, false)
+
+        // Inicializar lista de mensagens e o adaptador
+        messageList = mutableListOf()
+        chatAdapter = ChatAdapter(messageList)
+
+        // Configurar RecyclerView
+        recyclerView = view.findViewById(R.id.recyclerViewChat)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = chatAdapter
+
+        // Configurar campo de texto e botão de envio
+        editTextMessage = view.findViewById(R.id.editTextMessage)
+        buttonSend = view.findViewById(R.id.buttonSend)
+
+        buttonSend.setOnClickListener {
+            val userMessage = editTextMessage.text.toString()
+            if (userMessage.isNotEmpty()) {
+                // Adicionar mensagem do usuário
+                messageList.add(Message(userMessage, true))
+                chatAdapter.notifyDataSetChanged()
+
+                // Limpar o campo de texto
+                editTextMessage.setText("")
+
+                // Enviar mensagem para a API
+                sendMessageToChatGPT(userMessage)
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChatFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Chat().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun sendMessageToChatGPT(userMessage: String) {
+        val message = ChatGPTRequest.Message("user", userMessage)
+        val request = ChatGPTRequest(
+            model = "gpt-3.5-turbo",
+            messages = listOf(message),
+            max_tokens = 100
+        )
+
+        val apiService = RetrofitHelper.getChatGPTApiService()
+        val call = apiService.sendMessage(request)
+
+        call.enqueue(object : retrofit2.Callback<ChatGPTResponse> {
+            override fun onResponse(call: retrofit2.Call<ChatGPTResponse>, response: retrofit2.Response<ChatGPTResponse>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val chatResponse = response.body()!!.choices[0].message.content
+                    messageList.add(Message(chatResponse, false))
+                    chatAdapter.notifyDataSetChanged()
                 }
             }
+
+            override fun onFailure(call: retrofit2.Call<ChatGPTResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
     }
 }
