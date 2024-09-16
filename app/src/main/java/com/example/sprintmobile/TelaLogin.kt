@@ -34,7 +34,6 @@ class TelaLogin : AppCompatActivity() {
             val senha = binding.senhaLogin.text.toString()
 
             if (email.isNotEmpty() && senha.isNotEmpty()) {
-
                 firebaseAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         val intent = Intent(this, TelaInicial::class.java)
@@ -47,6 +46,8 @@ class TelaLogin : AppCompatActivity() {
                         }
                     }
                 }
+            }else{
+                Toast.makeText(this, "Preencha os campos", Toast.LENGTH_SHORT).show()
             }
         }
     }

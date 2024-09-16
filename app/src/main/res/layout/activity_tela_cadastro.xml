@@ -5,53 +5,56 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#254336"
+    android:backgroundTint="#000000"
     tools:context=".TelaCadastro">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="158dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="CADASTRO"
-        android:textSize="30sp"
+        android:textColor="#729762"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
-        android:layout_width="328dp"
-        android:layout_height="55dp"
+        android:layout_width="350dp"
+        android:layout_height="72dp"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="42dp"
+        android:textColorHint="#597445"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/poppins_bold"
             android:hint="Digite seu Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutSenha"
-        android:layout_width="328dp"
-        android:layout_height="55dp"
+        android:layout_width="350dp"
+        android:layout_height="72dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="42dp"
+        android:textColorHint="#597445"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
 
@@ -59,19 +62,23 @@
             android:id="@+id/senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/poppins_bold"
             android:hint="Crie uma senha"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutConfSenha"
-        android:layout_width="328dp"
-        android:layout_height="55dp"
+        android:layout_width="350dp"
+        android:layout_height="72dp"
         android:layout_marginStart="41dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="42dp"
+        android:textColorHint="#597445"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha">
 
@@ -79,35 +86,76 @@
             android:id="@+id/confSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/baseline_lock_24"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/poppins_bold"
             android:hint="Confirme sua senha"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn1"
-        android:layout_width="327dp"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="72dp"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="42dp"
-        android:backgroundTint="#254336"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/poppins_bold"
         android:text="Cadastro"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfSenha" />
 
     <TextView
         android:id="@+id/txtRedirectLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="149dp"
         android:text="Já tenho cadastro"
+        android:textColor="#729762"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Crie sua nova conta"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="249dp"
+        android:layout_height="236dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="68dp"
+        android:rotation="292"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/folha" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="465dp"
+        android:layout_height="186dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/grama" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
