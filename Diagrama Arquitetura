@@ -1,0 +1,10 @@
+SprintMobile/
+|------App/
+|       |-- com.example.mobile   -> Progamação das paginas
+|             |-- API            -> Progamções das Api's
+|-------|-- res
+|            |-- drawable        -> Icones e imagens utilizadas no projeto 
+|            |-- font            -> Fonts utilizadas
+|            |-- layout          -> Design das paginas
+|            |-- menu            -> Progamção da navbar onde escolho os itens que estarão nela
+|-------|-- Gradle Scripts       -> Configuração do gradle
