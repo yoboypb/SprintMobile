@@ -1,4 +1,4 @@
-package com.example.sprintmobile
+package com.example.sprintmobile.API
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sprintmobile.R
 
 class Chat : Fragment() {
 

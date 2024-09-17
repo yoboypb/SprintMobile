@@ -1,4 +1,4 @@
-package com.example.sprintmobile
+package com.example.sprintmobile.API
 
 data class Message(
     val content: String,

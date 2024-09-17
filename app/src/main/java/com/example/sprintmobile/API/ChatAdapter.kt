@@ -1,10 +1,11 @@
-package com.example.sprintmobile
+package com.example.sprintmobile.API
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sprintmobile.R
 
 class ChatAdapter(private val messageList: List<Message>) : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
 

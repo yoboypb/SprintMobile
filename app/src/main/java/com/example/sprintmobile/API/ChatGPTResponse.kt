@@ -1,4 +1,4 @@
-package com.example.sprintmobile
+package com.example.sprintmobile.API
 data class ChatGPTResponse(
     val choices: List<Choice>
 ) {

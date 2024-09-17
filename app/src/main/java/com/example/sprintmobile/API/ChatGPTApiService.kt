@@ -1,4 +1,4 @@
-package com.example.sprintmobile
+package com.example.sprintmobile.API
 
 import retrofit2.Call
 import retrofit2.http.Body
