@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 
@@ -22,6 +23,12 @@ class Home : Fragment() {
         imageView.setOnClickListener {
             // Criar um Intent para abrir a nova Activity
             val intent = Intent(activity, TelaProduto::class.java)
+            startActivity(intent)
+        }
+        val button: Button = view.findViewById(R.id.redirectComunidade)
+        button.setOnClickListener {
+            // Criar um Intent para abrir a nova Activity
+            val intent = Intent(activity, TelaComunidade::class.java)
             startActivity(intent)
         }
 

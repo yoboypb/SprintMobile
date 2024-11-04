@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editNomeProduto"
+            android:layout_width="236dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="52dp"
+            android:ems="10"
+            android:hint="Digite o nome do produto"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+        <EditText
+            android:id="@+id/editLocal"
+            android:layout_width="289dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="Digite onde comprou o produto"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAvaliacao" />
+
+        <EditText
+            android:id="@+id/editAvaliacao"
+            android:layout_width="289dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="Digite sua avaliação do produto"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPreco" />
+
+        <EditText
+            android:id="@+id/editPreco"
+            android:layout_width="236dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="4dp"
+            android:ems="10"
+            android:hint="Digite o preco do produto"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editNomeProduto" />
+
+        <Button
+            android:id="@+id/btnAtualizar"
+            android:layout_width="132dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="#3D825F"
+            android:text="Atualizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editLocal" />
+
+        <Button
+            android:id="@+id/btnSalvar"
+            android:layout_width="106dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#3D825F"
+            android:text="Adiconar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editLocal" />
+
+        <Button
+            android:id="@+id/btnListar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#3D825F"
+            android:text="Listar"
+            app:layout_constraintEnd_toStartOf="@+id/btnAtualizar"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btnSalvar"
+            app:layout_constraintTop_toBottomOf="@+id/editLocal" />
+
+        <TextView
+            android:id="@+id/textResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Recomendações da comunidade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnListar" />
+
+        <LinearLayout
+            android:layout_width="437dp"
+            android:layout_height="571dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textResultado">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProdutos"
+                android:layout_width="348dp"
+                android:layout_height="334dp"
+                android:layout_marginStart="100px"
+                android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="285dp"
+            android:layout_height="53dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Comunidade"
+            android:textSize="42sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.51"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="396dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Adicione um produto que voce gostaria de recomendar para a comunidade ou veja recomendações"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/editNomeProduto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView41"
+            app:layout_constraintVertical_bias="0.454" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="89dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_people_24" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

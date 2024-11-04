@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="237dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="88dp"
-        android:backgroundTint="#000000"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#3D825F"
         android:fontFamily="@font/poppins"
         android:text="Login"
         android:textSize="20sp"
@@ -25,7 +24,7 @@
         android:layout_width="237dp"
         android:layout_height="54dp"
         android:layout_marginBottom="12dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="#3D825F"
         android:fontFamily="@font/poppins"
         android:text="Cadastro"
         android:textSize="20sp"
@@ -38,33 +37,32 @@
 
     <TextView
         android:id="@+id/txtInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="384dp"
+        android:layout_width="265dp"
+        android:layout_height="75dp"
         android:fontFamily="@font/poppins"
         android:text="SustenAI"
-        android:textColor="#F3F3F3"
+        android:textColor="#3D825F"
         android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="32dp"
         android:fontFamily="@font/poppins"
         android:text="Bem vindo ao"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/txtInicio"
+        android:textColor="#3D825F"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
@@ -74,8 +72,9 @@
         android:layout_marginEnd="113dp"
         android:fontFamily="@font/poppins"
         android:text="O ecommerce do futuro"
-        android:textColor="#FFFFFF"
+        android:textColor="#3D825F"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInicio" />
 
